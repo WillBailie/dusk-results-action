@@ -3,13 +3,8 @@ on: [push]
 jobs:
   hello_world_job:
     runs-on: ubuntu-latest
-    name: A job to say hello
+    name: annotate test failures job
     steps:
-    - name: Hello world action step
-      id: hello
-      uses: kubowania/my-javascript-action@v1
-      with:
-        who-to-greet: 'Ania'
-    # Use the output from the `hello` step
-    - name: Get the output time
-      run: echo "The time was ${{ steps.hello.outputs.time }}"
+    - name: annotate test failures step
+      id: dusk
+      uses: WillBailie/dusk-results-action@v1
