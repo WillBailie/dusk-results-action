@@ -7,4 +7,4 @@ jobs:
     steps:
     - name: annotate test failures step
       id: dusk
-      uses: WillBailie/dusk-results-action
+      uses: WillBailie/dusk-results-action@v1
