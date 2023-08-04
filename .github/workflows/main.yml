@@ -9,7 +9,7 @@ jobs:
       id: hello
       uses: WillBailie/dusk-results-action@v2
       with:
-        who-to-greet: 'Will B'
+        who-to-greet: 'Will'
     # Use the output from the `hello` step
     - name: Get the output time
       run: echo "The time was ${{ steps.hello.outputs.time }}"
