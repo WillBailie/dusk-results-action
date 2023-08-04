@@ -1,5 +1,5 @@
 name: 'Dusk Results Parser Action'
 description: 'This actions parses a json file of dusk results and generates annotations in github actions'
 runs:
-  using: 'node12'
-  main: 'index.js'
+ using: 'node12'
+ main: 'index.js'
