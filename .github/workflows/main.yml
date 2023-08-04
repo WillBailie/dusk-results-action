@@ -5,6 +5,6 @@ jobs:
     runs-on: ubuntu-latest
     name: annotate test failures job
     steps:
-    - name: annotate test failures step
-      id: dusk
-      uses: WillBailie/dusk-results-action@v1
+      - name: annotate test failures step
+        id: dusk
+        uses: WillBailie/dusk-results-action@v1
