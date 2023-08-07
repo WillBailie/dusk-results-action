@@ -1,13 +1,14 @@
 name: 'Hello World'
 description: 'Greet someone and record the time'
-inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
+input: 
+  github_token:
+    description: 'GITHUB_TOKEN'
     required: true
-    default: 'World'
-outputs:
-  time: # id of output
-    description: 'The time we greeted you'
+    default: ${{ "${{ secrets.GITHUB_TOKEN }}" }}
+  report_path:
+    description: 'json file path'
+    required: false
+    default: tests/Browser/dusk_output.json
 runs:
   using: 'node12'
   main: 'index.js'
