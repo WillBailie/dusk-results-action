@@ -4,7 +4,7 @@ input:
   github_token:
     description: 'GITHUB_TOKEN'
     required: true
-    default: "${{ secrets.GITHUB_TOKEN }}"
+    default: ${{ secrets.GITHUB_TOKEN }}
   report_path:
     description: 'json file path'
     required: false
