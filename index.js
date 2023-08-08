@@ -5,7 +5,7 @@ const jsonData = require('./dusk_output.json');
 async function run() {
   try {
     const annotations = [];
-    
+
     // Loop through JSON items and check for the required property
     for (const item of jsonData) {
         annotations.push({
@@ -19,7 +19,7 @@ async function run() {
     }
 
     if (annotations.length > 0) {
-      const octokit = github.getOctokit(process.env.GITHUB_TOKEN);
+      const octokit = github.getOctokit(core.getInput('github_token'));
       await octokit.checks.create({
         ...github.context.repo,
         name: 'Check JSON Action',
