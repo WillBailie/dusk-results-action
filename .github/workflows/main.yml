@@ -7,6 +7,6 @@ jobs:
     steps:
     - name: Hello world action step
       id: hello
-      uses: WillBailie/dusk-results-action@v6
+      uses: WillBailie/dusk-results-action@v7
       with:
         report_path: './dusk_output.json'
