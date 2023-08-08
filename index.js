@@ -1,37 +1,45 @@
-const core = require('@actions/core')
-const github = require('@actions/github')
-const json = require('./dusk_output.json')
+const core = require('@actions/core');
+const github = require('@actions/github');
+const jsonData = require('./dusk_output.json');
 
-if (json) {
-  core.info('passed');
-} else {
-
-  core.setFailed('failed');
-
-  const token = core.getInput('github_token')
-  const octokit = new github.getOctokit(token)
-
-  const check = await octokit.rest.checks.create({
-    owner: github.context.repo.owner,
-    repo: github.context.repo.repo,
-    name: 'json',
-    head_sha: github.context.sha,
-    status: 'completed',
-    conclusion: 'failure',
-    output: {
-      title: 'test title',
-      summary: 'test summary',
-      annotations: [
-        {
-          path: 'testpath',
-          start_line: 1,
-          end_line: 1,
-          annotation_level: 'failure',
-          message: 'testMessage',
-          start_column: 1,
-          end_column: 1
-        }
-      ]
+async function run() {
+  try {
+    const annotations = [];
+    
+    // Loop through JSON items and check for the required property
+    for (const item of jsonData) {
+        annotations.push({
+          title: item.title,
+          message: item.message,
+          path: item.file,
+          start_line: item.line,
+          end_line: item.line,
+          annotation_level: item.annotation_level,
+        });
     }
-  });
+
+    if (annotations.length > 0) {
+      const octokit = github.getOctokit(process.env.GITHUB_TOKEN);
+      await octokit.checks.create({
+        ...github.context.repo,
+        name: 'Check JSON Action',
+        head_sha: github.context.sha,
+        status: 'completed',
+        conclusion: 'failure',
+        output: {
+          title: 'Check JSON Action',
+          summary: 'The JSON check found issues.',
+          annotations,
+        },
+      });
+
+      core.setFailed('JSON check failed.');
+    } else {
+      console.log('JSON check passed.');
+    }
+  } catch (error) {
+    core.setFailed(error.message);
+  }
 }
+
+run();
