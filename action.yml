@@ -1,4 +1,4 @@
-name: 'Hello World'
+name: 'Generate Annotations'
 description: 'annotate'
 inputs: 
   github_token:
