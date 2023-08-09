@@ -1,23 +1,11 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
-// const jsonData = require(core.getInput('report_path'));
-const fs = require('fs');
-const path = require('path');
-
-// Resolve relative path based on the workflow's working directory
-const relativePath = core.getInput('report_path');
-const absolutePath = path.resolve(process.cwd(), relativePath);
-
-const data = fs.readFileSync(absolutePath);
-
-console.log(JSON.parse(data));
+const jsonData = require(core.getInput('report_path'));
 
 async function run() {
   try {
 
     const annotations = [];
-
-    console.log('test')
 
     if (jsonData) {
       for (const item of jsonData) {
