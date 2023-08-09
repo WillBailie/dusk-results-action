@@ -20,24 +20,18 @@ async function run() {
 
     if (annotations.length > 0) {
       const octokit = github.getOctokit(core.getInput('github_token'));
-      if (octokit && typeof octokit.checks === 'object' && typeof octokit.checks.create === 'function') {
-        console.log('octokit instantiated');
-      } else {
-        console.log('octokit not instantiated');
-      }
       await octokit.rest.checks.create({
         ...github.context.repo,
         name: 'Generate annotations',
         head_sha: github.context.sha,
         status: 'completed',
-        conclusion: 'failure',
+        conclusion: 'warning',
         output: {
           title: 'Check JSON Action',
           summary: 'The JSON check found issues.',
           annotations,
         },
       });
-      core.setFailed('JSON check failed.');
     }
      else {
       console.log('JSON check passed.');
