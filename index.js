@@ -12,6 +12,8 @@ async function run() {
 
     console.log(JSON.parse(data));
 
+    console.log('test');
+
     if (jsonData) {
       for (const item of jsonData) {
         annotations.push({
