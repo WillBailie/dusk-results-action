@@ -9,5 +9,5 @@ jobs:
       id: annotate
       uses: WillBailie/dusk-results-action@main
       with:
-        report_path: 'dusk_output.json'
+        report_path: './dusk_output.json'
         github_token: ${{ secrets.GITHUB_TOKEN }}

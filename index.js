@@ -3,7 +3,9 @@ const github = require('@actions/github');
 // const jsonData = require(core.getInput('report_path'));
 const fs = require('fs');
 
-const data = fs.readFileSync(core.getInput('report_path'));
+const data = fs.readFileSync('./dusk_output.json');
+
+core.debug('Resolved file path:', filePath);
 
 console.log(JSON.parse(data));
 
