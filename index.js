@@ -1,7 +1,7 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
 // const jsonData = require(core.getInput('report_path'));
-const fs = require('fs/promise');
+const fs = require('fs');
 
 const input = core.getInput('report_path');
 const content = fs.readFile(input, { encoding: 'utf8' });
