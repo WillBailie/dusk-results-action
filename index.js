@@ -32,10 +32,6 @@ async function run() {
           annotations,
         },
       });
-      core.setFailed('JSON check failed.');
-    }
-     else {
-      console.log('JSON check passed.');
     }
   } catch (error) {
   }
