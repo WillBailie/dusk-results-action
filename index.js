@@ -7,6 +7,8 @@ async function run() {
     const annotations = [];
     const jsonData = JSON.parse(core.getInput('report_path'));
 
+    console.log(jsonData);
+
     if (doesFileExist(jsonData)) {
       // Loop through JSON items and check for the required property
       for (const item of jsonData) {
