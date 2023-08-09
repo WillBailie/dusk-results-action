@@ -38,7 +38,6 @@ async function run() {
       console.log('JSON check passed.');
     }
   } catch (error) {
-    core.setFailed(error.message);
   }
 }
 

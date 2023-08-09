@@ -9,5 +9,5 @@ inputs:
     required: false
     default: tests/Browser/dusk_output.json
 runs:
-  using: 'node12'
+  using: 'node16'
   main: 'index.js'
