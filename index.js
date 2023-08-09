@@ -2,10 +2,13 @@ const core = require('@actions/core');
 const github = require('@actions/github');
 // const jsonData = require(core.getInput('report_path'));
 const fs = require('fs');
+const path = require('path');
 
-// const data = fs.readFileSync('./dusk_output.json');
+// Resolve relative path based on the workflow's working directory
+const relativePath = core.getInput('report_path');
+const absolutePath = path.resolve(process.cwd(), relativePath);
 
-core.debug('Resolved file path:', core.getInput('file_path'));
+const data = fs.readFileSync(absolutePath);
 
 console.log(JSON.parse(data));
 
