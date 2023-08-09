@@ -19,16 +19,7 @@ async function run() {
     }
 
     if (annotations.length > 0) {
-      const octokit = github.getOctokit(core.getInput('github_token'));
-      if (octokit && typeof octokit.checks === 'object' && typeof octokit.checks.create === 'function') {
-        console.log('octokit is properly instantiated.');
-        
-        // Now you can use octokit to create checks or perform other actions
-      } else {
-        console.error('octokit is not properly instantiated.');
-        core.setFailed('octokit is not properly instantiated.');
-        return;
-      }
+      const octokit = github.getOctokit(process.env.GITHUB_TOKEN);
       await octokit.checks.create({
         ...github.context.repo,
         name: 'Generate annotations',
@@ -41,8 +32,8 @@ async function run() {
           annotations,
         },
       });
+      core.setFailed('JSON check failed.');
     }
-      // core.setFailed('JSON check failed.');
      else {
       console.log('JSON check passed.');
     }
