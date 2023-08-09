@@ -1,6 +1,11 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
-const jsonData = require(core.getInput('report_path'));
+// const jsonData = require(core.getInput('report_path'));
+import {promises as fs} from 'fs';
+
+const input = core.getInput('report_path');
+const content = await fs.readFile(input, { encoding: 'utf8' });
+console.log(JSON.parse(content));
 
 async function run() {
   try {
