@@ -12,10 +12,7 @@ async function run() {
 
     console.log(JSON.parse(data));
 
-    console.log(core.getInput('report_path'));
-
     if (jsonData) {
-      // Loop through JSON items and check for the required property
       for (const item of jsonData) {
         annotations.push({
           title: item.title,
