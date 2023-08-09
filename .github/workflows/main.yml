@@ -3,10 +3,10 @@ on: [push]
 jobs:
   hello_world_job:
     runs-on: ubuntu-latest
-    name: A job to say hello
+    name: Annotate flaky tests
     steps:
-    - name: Hello world action step
-      id: hello
+    - name: Annotate Step
+      id: annotate
       uses: WillBailie/dusk-results-action@main
       with:
         report_path: './dusk_output.json'

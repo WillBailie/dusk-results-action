@@ -22,7 +22,7 @@ async function run() {
       const octokit = github.getOctokit(process.env.GITHUB_TOKEN);
       await octokit.checks.create({
         ...github.context.repo,
-        name: 'Check JSON Action',
+        name: 'Generate annotations',
         head_sha: github.context.sha,
         status: 'completed',
         conclusion: 'failure',
