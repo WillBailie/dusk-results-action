@@ -1,11 +1,14 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
 const jsonData = require(core.getInput('report_path'));
+const fs = require('fs');
 
 async function run() {
   try {
 
     const annotations = [];
+
+    console.log(fs.readFile(core.getInput('report_path')));
 
     console.log(core.getInput('report_path'));
 
