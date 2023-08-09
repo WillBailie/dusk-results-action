@@ -18,6 +18,8 @@ async function run() {
         });
     }
 
+    console.log(core.getInput('github_token'));
+
     if (annotations.length > 0) {
       const octokit = github.getOctokit(core.getInput('github_token'));
       await octokit.checks.create({
