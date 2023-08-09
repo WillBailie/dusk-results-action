@@ -25,13 +25,14 @@ async function run() {
         name: 'Generate annotations',
         head_sha: github.context.sha,
         status: 'completed',
-        conclusion: 'warning',
+        conclusion: 'failure',
         output: {
           title: 'Check JSON Action',
           summary: 'The JSON check found issues.',
           annotations,
         },
       });
+      core.setFailed('JSON check failed.');
     }
      else {
       console.log('JSON check passed.');
