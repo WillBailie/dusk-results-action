@@ -33,9 +33,9 @@ async function run() {
             annotations,
           },
         });
-      } else {
-        core.setFailed('File does not exist')
       }
+    } else {
+      console.log('Not json found');
     }
   } catch (error) {
   }
