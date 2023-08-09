@@ -5,7 +5,7 @@ const fs = require('fs');
 
 // const data = fs.readFileSync('./dusk_output.json');
 
-core.debug('Resolved file path:', filePath);
+core.debug('Resolved file path:', core.getInput('file_path'));
 
 console.log(JSON.parse(data));
 
