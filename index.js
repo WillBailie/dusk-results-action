@@ -20,6 +20,11 @@ async function run() {
 
     if (annotations.length > 0) {
       const octokit = github.getOctokit(process.env.GITHUB_TOKEN);
+      if (octokit && typeof octokit.checks === 'object' && typeof octokit.checks.create === 'function') {
+        console.log('octokit instantiated');
+      } else {
+        console.log('octokit not instantiated');
+      }
       await octokit.checks.create({
         ...github.context.repo,
         name: 'Generate annotations',
