@@ -4,7 +4,7 @@ const github = require('@actions/github');
 const fs = require('fs');
 
 const input = core.getInput('report_path');
-const content = fs.readFile(input);
+const content = fs.readFileSync(input);
 console.log(JSON.parse(content));
 
 async function run() {
