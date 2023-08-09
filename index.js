@@ -34,8 +34,6 @@ async function run() {
           },
         });
       }
-    } else {
-      console.log('Not json found');
     }
   } catch (error) {
   }
