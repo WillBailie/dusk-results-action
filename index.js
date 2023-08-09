@@ -25,7 +25,7 @@ async function run() {
       } else {
         console.log('octokit not instantiated');
       }
-      await octokit.checks.create({
+      await octokit.rest.checks.create({
         ...github.context.repo,
         name: 'Generate annotations',
         head_sha: github.context.sha,
