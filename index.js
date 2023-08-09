@@ -8,6 +8,7 @@ async function run() {
     const jsonData = JSON.parse(core.getInput('report_path'));
 
     if (doesFileExist(jsonData)) {
+      console.log(jsonData);
       // Loop through JSON items and check for the required property
       for (const item of jsonData) {
         annotations.push({
@@ -35,7 +36,7 @@ async function run() {
           },
         });
       } else {
-        core.setFailed('File does not exist');
+        core.setFailed('File does not exist')
       }
     }
   } catch (error) {
