@@ -1,10 +1,15 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
-const jsonData = require(core.getInput('report_path'));
+const fs = require('fs')
+// const jsonData = require(core.getInput('report_path'));
 
 async function run() {
   try {
     const annotations = [];
+
+    const content = await fs.readFile(core.getInput('report_path'));
+
+    console.log(content);
 
     if (jsonData) {
       // Loop through JSON items and check for the required property
