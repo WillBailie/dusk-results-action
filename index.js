@@ -8,7 +8,9 @@ async function run() {
 
     const annotations = [];
 
-    console.log(fs.readFile(core.getInput('report_path')));
+    const data = fs.readFileSync(core.getInput('report_path'));
+
+    console.log(JSON.parse(data));
 
     console.log(core.getInput('report_path'));
 
