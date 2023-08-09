@@ -1,10 +1,10 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
-const jsonData = require('./dusk_output.json');
 
 async function run() {
   try {
     const annotations = [];
+    const jsonData = JSON.parse(core.getInput('report_path'));
     
     // Loop through JSON items and check for the required property
     for (const item of jsonData) {
