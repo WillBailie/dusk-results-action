@@ -3,16 +3,16 @@ const github = require('@actions/github');
 // const jsonData = require(core.getInput('report_path'));
 const fs = require('fs');
 
+const data = fs.readFileSync(core.getInput('report_path'));
+
+console.log(JSON.parse(data));
+
 async function run() {
   try {
 
     const annotations = [];
 
-    const data = fs.readFileSync(core.getInput('report_path'));
-
-    console.log(JSON.parse(data));
-
-    console.log('test');
+    console.log('test')
 
     if (jsonData) {
       for (const item of jsonData) {
