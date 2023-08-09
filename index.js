@@ -1,6 +1,6 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
-const jsonData = require(core.getInput('report_path'));
+// const jsonData = require(core.getInput('report_path'));
 const fs = require('fs');
 
 async function run() {
