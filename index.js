@@ -7,7 +7,7 @@ async function run() {
 
     const annotations = [];
 
-    const input = core.getInput('./dusk_output.json');
+    const input = './dusk_output.json';
     const jsonData = fs.readFileSync(input);
 
 
