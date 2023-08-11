@@ -2,14 +2,14 @@ const core = require('@actions/core');
 const github = require('@actions/github');
 const fs = require('fs');
 
+const input = './dusk_output.json';
+const jsonData = fs.readFileSync(input);
+console.log(jsonData);
+
 async function run() {
   try {
 
     const annotations = [];
-
-    const input = './dusk_output.json';
-    const jsonData = fs.readFileSync(input);
-
 
     if (jsonData) {
       for (const item of jsonData) {
