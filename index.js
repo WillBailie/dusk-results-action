@@ -1,9 +1,10 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
 const fs = require('fs');
+const jsonData = require('./dusk_output.json');
 
-const input = './dusk_output.json';
-const jsonData = fs.readFileSync(input);
+// const input = './dusk_output.json';
+// const jsonData = fs.readFileSync(input);
 console.log(jsonData);
 
 async function run() {
