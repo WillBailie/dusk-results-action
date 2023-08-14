@@ -9,7 +9,7 @@ const fs = require('fs');
 // const path = require('path');
 // const filePath = path.resolve(process.cwd(), core.getInput('report_path'));
 // console.log('Resolved file path:', filePath);
-const content = fs.readFileSync(filePath);
+const content = fs.readFileSync(core.getInput('report_path'));
 console.log(content);
 
 async function run() {
