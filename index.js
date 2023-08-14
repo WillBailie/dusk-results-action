@@ -10,6 +10,7 @@ const fs = require('fs');
 // const filePath = path.resolve(process.cwd(), core.getInput('report_path'));
 // console.log('Resolved file path:', filePath);
 const content = fs.readFileSync(core.getInput('report_path'));
+jsonData = JSON.parse(content);
 console.log(content);
 
 async function run() {
