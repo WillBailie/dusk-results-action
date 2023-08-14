@@ -1,11 +1,7 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
 const fs = require('fs');
-const jsonData = require('./dusk_output.json');
-
-// const input = './dusk_output.json';
-// const jsonData = fs.readFileSync(input);
-console.log(jsonData);
+const jsonData = require(core.getInput('report_path'));
 
 async function run() {
   try {
@@ -16,7 +12,7 @@ async function run() {
       for (const item of jsonData) {
         annotations.push({
           title: item.title,
-          message: item.message,
+          message: item.message ,
           path: item.file,
           start_line: item.line,
           end_line: item.line,
