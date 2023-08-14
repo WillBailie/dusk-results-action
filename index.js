@@ -36,8 +36,8 @@ async function run() {
             annotations,
           },
         });
-      }
       console.log(response);
+      }
     }
   } catch (error) {
   }
