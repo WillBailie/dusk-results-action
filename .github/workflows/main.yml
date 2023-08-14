@@ -6,7 +6,7 @@ jobs:
     name: Annotate flaky tests
     steps:
     - name: show files
-      run: ls -al /home/runner/work/dusk-results-action
+      run: ls -al /home/runner/work/dusk-results-action/dusk-results-action
     - name: Annotate Step
       id: annotate
       uses: WillBailie/dusk-results-action@main
