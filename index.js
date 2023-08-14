@@ -22,21 +22,46 @@ async function run() {
         });
       }
 
+      // if (annotations.length > 0) {
+      //   const octokit = github.getOctokit(core.getInput('github_token'));
+      //   const response = await octokit.rest.checks.create({
+      //     ...github.context.repo,
+      //     name: 'Generate annotations',
+      //     head_sha: github.context.sha,
+      //     status: 'completed',
+      //     conclusion: 'failure',
+      //     output: {
+      //       title: 'Check for flaky tests',
+      //       summary: 'Found flaky tests.',
+      //       annotations,
+      //     },
+      //   });
+      // console.log(response);
+      // }
       if (annotations.length > 0) {
         const octokit = github.getOctokit(core.getInput('github_token'));
-        const response = await octokit.rest.checks.create({
-          ...github.context.repo,
-          name: 'Generate annotations',
-          head_sha: github.context.sha,
-          status: 'completed',
-          conclusion: 'failure',
-          output: {
-            title: 'Check for flaky tests',
-            summary: 'Found flaky tests.',
-            annotations,
-          },
-        });
-      console.log(response);
+        
+        try {
+          const response = await octokit.rest.checks.create({
+            ...github.context.repo,
+            name: 'Generate annotations',
+            head_sha: github.context.sha,
+            status: 'completed',
+            conclusion: 'failure',
+            output: {
+              title: 'Check for flaky tests',
+              summary: 'Found flaky tests.',
+              annotations,
+            },
+          });
+      
+          console.log('API Response:', response);
+        } catch (error) {
+          console.error('API Error:', error.message);
+          core.setFailed('Failed to create annotations.');
+        }
+      } else {
+        console.log('No annotations to create.');
       }
     }
   } catch (error) {
