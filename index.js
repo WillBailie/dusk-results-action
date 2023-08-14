@@ -22,10 +22,9 @@ async function run() {
         });
       }
 
-      console.log(annotations);
-
       if (annotations.length > 0) {
         const octokit = github.getOctokit(core.getInput('github_token'));
+        console.log(octokit);
         await octokit.rest.checks.create({
           ...github.context.repo,
           name: 'Generate annotations',
@@ -33,8 +32,8 @@ async function run() {
           status: 'completed',
           conclusion: 'failure',
           output: {
-            title: 'Check JSON Action',
-            summary: 'The JSON check found issues.',
+            title: 'Check for flaky tests',
+            summary: 'Found flaky tests.',
             annotations,
           },
         });
