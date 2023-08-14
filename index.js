@@ -7,7 +7,6 @@ async function run() {
 
     const content = fs.readFileSync(core.getInput('report_path'));
     jsonData = JSON.parse(content);
-    console.log(jsonData);
 
     const annotations = [];
 
@@ -22,6 +21,8 @@ async function run() {
           annotation_level: item.annotation_level,
         });
       }
+
+      console.log(annotations);
 
       if (annotations.length > 0) {
         const octokit = github.getOctokit(core.getInput('github_token'));
