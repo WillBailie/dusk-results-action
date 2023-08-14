@@ -2,14 +2,17 @@ const core = require('@actions/core');
 const github = require('@actions/github');
 const fs = require('fs');
 
+if (core.getInput('report_path') == './dusk_output.json') {
+  console.log('true');
+} else {
+  console.log('false');
+}
 const content = fs.readFileSync(core.getInput('report_path'));
 console.log(content);
 const jsonData = JSON.parse(content);
 
 async function run() {
   try {
-
-    
 
     const annotations = [];
 
