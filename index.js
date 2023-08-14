@@ -8,8 +8,6 @@ async function run() {
     const content = fs.readFileSync(core.getInput('report_path'));
     jsonData = JSON.parse(content);
 
-    console.log(jsonData);
-
     const annotations = [];
 
     if (jsonData) {
@@ -38,8 +36,8 @@ async function run() {
             annotations,
           },
         });
-        console.log(response);
       }
+      console.log(response);
     }
   } catch (error) {
   }
