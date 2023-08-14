@@ -2,13 +2,6 @@ const core = require('@actions/core');
 const github = require('@actions/github');
 const fs = require('fs');
 
-// const content = fs.readFileSync(core.getInput('report_path'));
-// console.log(content);
-// const jsonData = JSON.parse(content);
-
-// const path = require('path');
-// const filePath = path.resolve(process.cwd(), core.getInput('report_path'));
-// console.log('Resolved file path:', filePath);
 const content = fs.readFileSync(core.getInput('report_path'));
 jsonData = JSON.parse(content);
 console.log(content);
