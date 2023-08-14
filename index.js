@@ -2,12 +2,11 @@ const core = require('@actions/core');
 const github = require('@actions/github');
 const fs = require('fs');
 
-const content = fs.readFileSync(core.getInput('report_path'));
-jsonData = JSON.parse(content);
-console.log(content);
-
 async function run() {
   try {
+
+    const content = fs.readFileSync(core.getInput('report_path'));
+    jsonData = JSON.parse(content);
 
     const annotations = [];
 
