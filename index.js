@@ -24,7 +24,6 @@ async function run() {
 
       if (annotations.length > 0) {
         const octokit = github.getOctokit(core.getInput('github_token'));
-        console.log(octokit);
         await octokit.rest.checks.create({
           ...github.context.repo,
           name: 'Generate annotations',
