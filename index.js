@@ -24,8 +24,8 @@ async function run() {
       }
 
       if (annotations.length > 0) {
-        const octokit = github.getOctokit(core.getInput('github_token'));
-        
+        // const octokit = github.getOctokit(core.getInput('github_token'));
+        const octokit = github.getOctokit('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');
         try {
           const response = await octokit.rest.checks.create({
             ...github.context.repo,
