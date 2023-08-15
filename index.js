@@ -21,7 +21,7 @@ async function run() {
           annotation_level: item.annotation_level,
         });
       }
-      
+
       if (annotations.length > 0) {
         const octokit = github.getOctokit(core.getInput('github_token'));
         
@@ -45,8 +45,12 @@ async function run() {
       } else {
         console.log('No annotations to create.');
       }
+    } else {
+      console.log(jsonData);
+      core.setFailed('No json content available');
     }
   } catch (error) {
+    core.setFailed(error.message);
   }
 }
 
