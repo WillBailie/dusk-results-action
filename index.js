@@ -11,6 +11,7 @@ async function run() {
     const annotations = [];
 
     if (jsonData) {
+      console.log(jsonData);
       for (const item of jsonData) {
         annotations.push({
           title: item.title,
