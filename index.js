@@ -25,7 +25,7 @@ async function run() {
 
       if (annotations.length > 0) {
         const octokit = github.getOctokit(core.getInput('github_token'));
-        
+
         try {
           const response = await octokit.rest.checks.create({
             ...github.context.repo,
@@ -39,6 +39,7 @@ async function run() {
               annotations,
             },
           });      
+          console.log(response);
         } catch (error) {
           console.error('API Error:', error.message);
           core.setFailed('Failed to create annotations.');
