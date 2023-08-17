@@ -36,10 +36,12 @@ async function run() {
             output: {
               title: 'Check for flaky tests',
               summary: 'Found flaky tests.',
-              annotations,
+              annotations: annotations,
             },
           });      
-          console.log(response);
+          annotations.forEach(element => {
+            core.warning(element.title + "is marked as flaky, consider rerunning");
+          });
         } catch (error) {
           console.error('API Error:', error.message);
           core.setFailed('Failed to create annotations.');
