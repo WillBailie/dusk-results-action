@@ -40,7 +40,7 @@ async function run() {
             },
           });      
           annotations.forEach(element => {
-            core.warning(element.title + "is marked as flaky, consider rerunning");
+            core.warning(element.title + " is marked as flaky, consider rerunning");
           });
         } catch (error) {
           console.error('API Error:', error.message);
