@@ -26,19 +26,7 @@ async function run() {
       if (annotations.length > 0) {
         const octokit = github.getOctokit(core.getInput('github_token'));
 
-        try {
-          const response = await octokit.rest.checks.create({
-            ...github.context.repo,
-            name: 'Generate annotations',
-            head_sha: github.context.sha,
-            status: 'completed',
-            conclusion: 'failure',
-            output: {
-              title: 'Check for flaky tests',
-              summary: 'Found flaky tests.',
-              annotations: annotations,
-            },
-          });      
+        try {     
           annotations.forEach(element => {
             core.warning(element.title + " is marked as flaky, consider rerunning");
           });
