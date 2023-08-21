@@ -9,7 +9,7 @@ jobs:
       uses: actions/checkout@main
     - name: Annotate Step
       id: annotate
-      uses: WillBailie/dusk-results-action@main
+      uses: openplayuk/gh-action-annotate-flaky-tests@main
       with:
         report_path: ./dusk_output.json
         github_token: ${{ secrets.GITHUB_TOKEN }}
