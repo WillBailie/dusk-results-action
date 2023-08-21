@@ -7,7 +7,7 @@ jobs:
     steps:
     - name: Get repo
       uses: actions/checkout@main
-    - name: Annotate Step
+    - name: Annotate Steps
       id: annotate
       uses: openplayuk/gh-action-annotate-flaky-tests@main
       with:
