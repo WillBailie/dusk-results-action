@@ -5,13 +5,19 @@ const fs = require('fs');
 async function run() {
   try {
 
-    const content = fs.readFileSync(core.getInput('report_path'));
-    jsonData = JSON.parse(content);
+    const filePath = core.getInput('report_path');
 
+    if(fs.existsSync(filePath)) {
+      const content = fs.readFileSync();
+      jsonData = JSON.parse(content);
+    } else {
+      console.log('file not found');
+      return;
+    }
+    
     const annotations = [];
 
     if (jsonData) {
-      console.log(jsonData);
       for (const item of jsonData) {
         annotations.push({
           title: item.title,
